@@ -1,27 +1,18 @@
 #include "main.h"
 
 /**
- * get_bit - returns the value of a bit at a given
- * index.
- * @n: unsigned long int input.
- * @index: index of the bit.
- *
- * Return: value of the bit.
+ * get_bit - get the bit at a given index
+ * @n: number to check
+ * @index: index to check
+ * Return: bit value or -1;
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned int i;
-
-	if (n == 0 && index < 64)
-		return (0);
-
-	for (i = 0; i <= 63; n >>= 1, i++)
-	{
-		if (index == i)
-		{
-			return (n & 1);
-		}
-	}
-
-	return (-1);
+	unsigned long int i = 1, len = 0;
+	
+	while (len++ < index)
+		i = i << 1;
+	if (i > n)
+		return (-1);
+	return(n & i ? 1 : 0);
 }
